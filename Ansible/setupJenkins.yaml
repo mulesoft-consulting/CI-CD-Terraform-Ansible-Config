@@ -1,0 +1,8 @@
+---
+- name: Configure CI server
+  hosts: jenkins
+  strategy: linear
+  serial: 1
+
+  roles:
+    - geerlingguy.jenkins

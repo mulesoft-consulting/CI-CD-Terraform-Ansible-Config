@@ -1,0 +1,5 @@
+---
+- name: Base setup Linux in the local network...
+  hosts: nexus
+  become: yes
+

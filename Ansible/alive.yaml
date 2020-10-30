@@ -1,0 +1,8 @@
+---
+- name: Base setup Linux in the local network...
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Ping all servers
+      ping:

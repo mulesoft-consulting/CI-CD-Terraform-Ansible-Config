@@ -1,0 +1,35 @@
+---
+- name: Base setup Linux in the local network...
+  hosts: all
+  become: yes
+
+  vars:
+    create_nexus_user: nexus
+    create_jenkins_user: jenkins
+    #      ansible_UID: 999
+    #      ansible_group: ansible
+    #      ansible_GID: 999
+    #      ansible_home: "/home/ansible"
+          
+  tasks:
+    - name: Ensure the Ansible group exists
+      group:
+        name: applications
+        state: present
+
+    - name: Upgrade installed packages
+      apt: 
+        update_cache: yes
+        upgrade: safe 
+
+    - name: Install Java, Maven, Git
+      apt:
+        name: 
+          - default-jdk
+          - maven
+          - git
+          - curl
+          - apt-transport-https
+          - gnupg
+        state: present
+
